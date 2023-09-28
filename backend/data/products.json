@@ -1,0 +1,89 @@
+[
+{
+  "name": "Oppo A17",
+  "price": 49.99,
+  "description": "This is a sample product description for Example Product 1.",
+  "ratings": "4.5",
+  "images": [
+    {
+      "image": "image1.jpg"
+    }
+  ],
+  "catagory": "Electronics",
+  "seller": "Sample Seller Inc.",
+  "stock": 12,
+  "numOfReviews": 15,
+  "reviews": [
+    {
+      "name": "John Doe",
+      "rating": "4.0",
+      "comment": "Great product!"
+    },
+    {
+      "name": "Jane Smith",
+      "rating": "5.0",
+      "comment": "Excellent quality."
+    }
+  ],
+  "createdAt": "2023-09-26T12:00:00.000Z"
+},
+{
+    "name": "Bata 1212 Slipper",
+    "price": 29.99,
+    "description": "This is another sample product description for Sample Product 2.",
+    "ratings": "4.2",
+    "images": [
+      {
+        "image": "image3.jpg"
+      }
+    ],
+    "catagory": "Cloths/Shoes",
+    "seller": "Fashion House Ltd.",
+    "stock": 15,
+    "numOfReviews": 10,
+    "reviews": [
+      {
+        "name": "Alice Johnson",
+        "rating": "4.5",
+        "comment": "Comfortable and stylish!"
+      },
+      {
+        "name": "Bob Wilson",
+        "rating": "3.8",
+        "comment": "Decent quality but a bit pricey."
+      }
+    ],
+    "createdAt": "2023-09-27T10:30:00.000Z"
+  },
+  {
+    "name": "NodeJs Concepts Book",
+    "price": 9.99,
+    "description": "A budget-friendly sample product with a brief description.",
+    "ratings": "3.9",
+    "images": [
+      {
+        "image": "image5.jpg"
+      },
+      {
+        "image": "image6.jpg"
+      }
+    ],
+    "catagory": "Books",
+    "seller": "Bookstore XYZ",
+    "stock": 10,
+    "numOfReviews": 5,
+    "reviews": [
+      {
+        "name": "Eva Miller",
+        "rating": "4.2",
+        "comment": "Good read for the price!"
+      },
+      {
+        "name": "David Clark",
+        "rating": "3.5",
+        "comment": "Average quality book."
+      }
+    ],
+    "createdAt": "2023-09-28T15:45:00.000Z"
+  }
+]
