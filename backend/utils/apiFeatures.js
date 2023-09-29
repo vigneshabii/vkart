@@ -15,13 +15,18 @@ class APIFeatures {
     }
     filter(){
         const queryStrCopy = {...this.queryString};
-        console.log(queryStrCopy);
-        const removeFields = ['keyword','limit','page'];
+        const removeFields = ['keyword','limit','page' ];
         removeFields.forEach(val=>delete queryStrCopy[val]);
         let queryStr = JSON.stringify(queryStrCopy);
         queryStr = queryStr.replace(/\b(gt|gte|lt|lte)/g,match=>`$${match}`);
-        console.log(queryStr)
         this.query.find(JSON.parse(queryStr));
+        return this;
+    }
+    paginate(resPerPage){
+        const currentPage = Number(this.queryString.page) || 1;
+        console.log(currentPage);
+        const skip = resPerPage * (currentPage - 1);
+        this.query.find().limit(resPerPage).skip(skip);
         return this;
     }
 }

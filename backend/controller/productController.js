@@ -5,7 +5,8 @@ const createErrorHandler = require('../utils/errorHandler');
 
 //Get Products - 
 exports.getProducts = async (req,res,next)=>{
-    const apiFeatures = new APIFeatures(Product.find(),req.query).search().filter();
+    const resPerPage = 2;
+    const apiFeatures = new APIFeatures(Product.find(),req.query).search().filter().paginate(resPerPage);
     const product=await apiFeatures.query;
     if(!product){
         return res.status(404).json({
