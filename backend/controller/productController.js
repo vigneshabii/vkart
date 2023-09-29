@@ -1,13 +1,16 @@
 const Product =require('../model/productModel');
+const APIFeatures = require('../utils/apiFeatures');
 const createErrorHandler = require('../utils/errorHandler');
+
 
 //Get Products - 
 exports.getProducts = async (req,res,next)=>{
-    const product=await Product.find();
+    const apiFeatures = new APIFeatures(Product.find(),req.query).search().filter();
+    const product=await apiFeatures.query;
     if(!product){
         return res.status(404).json({
             success: false,
-            message: "cannot insert"
+            message: "Cannot get products"
         });
     }
     res.status(200).json({

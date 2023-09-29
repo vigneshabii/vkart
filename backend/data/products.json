@@ -9,7 +9,7 @@
       "image": "image1.jpg"
     }
   ],
-  "catagory": "Electronics",
+  "category": "Electronics",
   "seller": "Sample Seller Inc.",
   "stock": 12,
   "numOfReviews": 15,
@@ -37,7 +37,7 @@
         "image": "image3.jpg"
       }
     ],
-    "catagory": "Cloths/Shoes",
+    "category": "Cloths/Shoes",
     "seller": "Fashion House Ltd.",
     "stock": 15,
     "numOfReviews": 10,
@@ -68,7 +68,7 @@
         "image": "image6.jpg"
       }
     ],
-    "catagory": "Books",
+    "category": "Books",
     "seller": "Bookstore XYZ",
     "stock": 10,
     "numOfReviews": 5,
