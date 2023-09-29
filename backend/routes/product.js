@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.route('/product').get(getProducts);
-router.route('/product/new').post(catchAsyncError(newProduct))
+router.route('/product').post(catchAsyncError(newProduct))
 
 router.route('/product/:id')
 .get(getSingleProduct)
