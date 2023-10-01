@@ -11,8 +11,22 @@ exports.isAuthenticatedUser = async (req,res,next) =>{
     }
     const decoded = jwt.verify(token,process.env.JWT_SECRET)
     req.user=await User.findById(decoded.id)
-    next();
+        next();
     } catch(err){
-        next(err)
+       return next(err)
+    }
+}
+
+exports.authorizeRoles = (...roles) => {
+    try{
+    return (req,res,next) =>{
+    
+        if(!roles.includes(req.user.role)){
+        throw new createErrorHandler(`Role ${req.user.role} is not allowed`,401)    
+        }
+        next();
+    }
+    } catch (err){
+        next(err);   
     }
 }

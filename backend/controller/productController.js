@@ -26,11 +26,13 @@ exports.getProducts = async (req,res,next)=>{
 exports.newProduct = async (req,res,next) => {
     try{
     const product = await Product.create(req.body)
+    if(!product || product.length === 0){
+        throw new createErrorHandler('Cannot create product',400); 
+    }
     res.status(201).json({
     success:true,
     product,
    }) 
-   throw err;
 } catch (err){
     next(err)
 }

@@ -39,3 +39,20 @@ exports.loginUser = async(req,res,next) =>{
         next(err)
     }
 }
+
+exports.logout = (req,res,next) =>{
+    try{
+        const options = {
+            expires: new Date(Date.now()),
+            httpOly: true,
+        } 
+        res.cookie('token',null,options)
+        .status(200)
+        .json({
+            success: true,
+            message: 'Logged Out Successfully'
+        })
+    } catch(err) {
+        next(err)
+    }
+}
