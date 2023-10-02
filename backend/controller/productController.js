@@ -25,6 +25,7 @@ exports.getProducts = async (req,res,next)=>{
 //Create Product - api/v1/product/new
 exports.newProduct = async (req,res,next) => {
     try{
+    req.body.user = req.user.id;
     const product = await Product.create(req.body)
     if(!product || product.length === 0){
         throw new createErrorHandler('Cannot create product',400); 
