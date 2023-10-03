@@ -153,7 +153,7 @@ exports.changePassword = async (req,res,next) =>{
 }
 }
 
-//Update profile - 
+//Update profile - /api/v1/update
 exports.updateProfile = async (req,res,next) => {
     try{
     const newUserData = {
@@ -171,4 +171,73 @@ exports.updateProfile = async (req,res,next) => {
 } catch (err){
     next(err)
 }
+}
+
+//Admin: Get All users - /api/v1/admin/users
+exports.getAllusers = async (req,res,next)=>{
+    try{
+    const users = await User.find();
+    res.status(200).json({
+        success: true,
+        users
+    })
+} catch (err){
+    next(err)
+}
+}
+
+//Admin: Get Specific user - /api/v1/admin/user/:id
+exports.getUser = async (req,res,next) => {
+    try{
+    const user = await User.findById(req.params.id)
+    if(!user){
+        throw new createErrorHandler(`User not found with this ${req.params.id}`,)
+    }
+    res.status(200).json({
+        success:true,
+        user
+    })
+} catch (err){
+    next(err)
+}
+}   
+
+//Admin: Update user - /api/v1/admin/user/:id
+exports.updateUser = async(req,res,next) => {
+    try{
+        const newUserData = {
+            name: req.body.name,
+            email: req.body.email,
+            role: req.body.role
+        }
+        const user =await User.findByIdAndUpdate(req.params.id, newUserData, {
+            new: true,
+            runValidators: true,
+        })
+        res.status(200).json({
+            success: true,
+            user
+        })
+    } catch (err){
+        next(err)
+    }   
+}
+
+//Admin: Delete user - 
+exports.deleteUser = async(req,res,next) =>{
+    try{
+        const user =await User.findById(req.params.id)
+        if(!user){
+            throw new createErrorHandler(`User not found with this ${req.params.id}`,400)
+        }
+        if(req.user.id == req.params.id){
+            throw new createErrorHandler('You cannot delete your own',401);
+        }
+        await user.deleteOne();
+        res.status(200).json({
+            success:true,
+        })
+    } catch (err){
+        next(err)
+    }   
 }
