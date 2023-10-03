@@ -12,7 +12,7 @@ const server=app.listen(process.env.PORT, ()=>{
 })
 
 process.on('unhandledRejection',(err)=>{
-    console.log(`Error ${err.message}`);
+    console.log(`Error ${err.message} ${err.stack} ${err}`);
     console.log('Shutting down the server due to unhandled rejection')
     server.close(()=>{
         process.exit(1);

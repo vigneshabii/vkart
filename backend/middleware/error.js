@@ -23,6 +23,18 @@ err.statusCode = err.statusCode || 500;
             message=`Resourse not found: ${err.path}`
             error = new Error(message)
         }
+        if(err.code == 11000){
+            message=`Duplicate ${Object.keys(err.keyValue)} error`;
+            error = new Error(message)
+        }
+        if(err.name == 'JSONWebTokenError'){
+            let message = 'Json web token is invalid, try again'
+            error = new Error(message)
+        }
+        if(err.name == 'TokenExpiredError'){
+            let message = 'Json web token is expired, try again'
+            error = new Error(message)
+        }
         return res.status(err.statusCode).json({
             success: false,
             message: error.message || 'Internal server error'
