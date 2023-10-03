@@ -123,3 +123,52 @@ exports.resetPassword = async(req,res,next) =>{
         next(err)
     }
 }
+
+//Get user profile - /api/v1/myprofile
+exports.getUserProfile = async (req,res,next) =>{
+    const user = await User.findById(req.user.id)
+    res.status(200).json({
+        success: true,
+        user,
+    })
+}
+
+//change password - /api/v1/login
+exports.changePassword = async (req,res,next) =>{
+    try{
+    const user = await User.findById(req.user.id).select('+password');
+
+    //check old password
+    if(! await user.isValidPassword(req.body.oldPassword)){
+        throw createErrorHandler('Old password is incorrect',401)
+    }
+    //Assign new password
+    user.password = req.body.password;
+    await user.save();
+    res.status(200).json({
+        success:true 
+    })
+} catch(err){
+    next(err)
+}
+}
+
+//Update profile - 
+exports.updateProfile = async (req,res,next) => {
+    try{
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email
+    }
+    const user =await User.findByIdAndUpdate(req.user.id, newUserData, {
+        new: true,
+        runValidators: true,
+    })
+    res.status(200).json({
+        success: true,
+        user
+    })
+} catch (err){
+    next(err)
+}
+}

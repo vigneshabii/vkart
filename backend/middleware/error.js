@@ -18,14 +18,17 @@ err.statusCode = err.statusCode || 500;
         if(err.name == "ValidationError"){
             message=Object.values(err.errors).map(value => value.message);
             error = new Error(message)
+            err.statusCode = 400;
         }
         if(err.name == "CastError"){
             message=`Resourse not found: ${err.path}`
             error = new Error(message)
+            err.statusCode = 400;
         }
         if(err.code == 11000){
             message=`Duplicate ${Object.keys(err.keyValue)} error`;
             error = new Error(message)
+            err.statusCode = 400;
         }
         if(err.name == 'JSONWebTokenError'){
             let message = 'Json web token is invalid, try again'
@@ -34,6 +37,7 @@ err.statusCode = err.statusCode || 500;
         if(err.name == 'TokenExpiredError'){
             let message = 'Json web token is expired, try again'
             error = new Error(message)
+            err.statusCode = 400;
         }
         return res.status(err.statusCode).json({
             success: false,
