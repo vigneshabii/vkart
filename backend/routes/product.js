@@ -4,7 +4,7 @@ const { catchAsyncError } = require('../middleware/catchAsyncError');
 const router = express.Router();
 const {isAuthenticatedUser, authorizeRoles} = require('../middleware/authenticate')
 
-router.route('/product').get(catchAsyncError(isAuthenticatedUser),getProducts);
+router.route('/products').get(catchAsyncError(isAuthenticatedUser),getProducts);
 
 router.route('/product/:id')
 .get(getSingleProduct)
