@@ -6,16 +6,33 @@ const createErrorHandler = require('../utils/errorHandler');
 //Get Products - 
 exports.getProducts = async (req,res,next)=>{
     try{
-    const resPerPage = 2;
-    const apiFeatures = new APIFeatures(Product.find(),req.query).search().filter().paginate(resPerPage);
-    const product=await apiFeatures.query;
-    if(!product || product.length === 0){
+    const resPerPage = 3;
+    
+    let buildQuery = () =>{
+        return new APIFeatures(Product.find(),req.query).search().filter()
+    }
+    
+    const filteredProductsCount = await buildQuery().query.countDocuments({});
+    const totalProductsCount =  await Product.countDocuments({});
+
+    let productsCount = totalProductsCount;
+
+    if(filteredProductsCount !== totalProductsCount){
+        productsCount = filteredProductsCount
+    }
+
+    const products=await buildQuery().paginate(resPerPage).query;
+    
+    if(!products || products.length === 0){
         throw new createErrorHandler('Cannot get products',400); 
     }
+    await new Promise(resolve => setTimeout(resolve, 500))
+
     res.status(200).json({
         success: true,
-        count: product.length,
-        product,
+        count: productsCount,
+        resPerPage,
+        products,
     })
     } catch(err){
         next(err)
@@ -46,6 +63,7 @@ exports.getSingleProduct = async (req,res,next) => {
     if(!product || product.length === 0){
         throw new createErrorHandler('Product not found',400); 
     }
+    await new Promise(resolve => setTimeout(resolve, 500))
     res.status(200).json({
         success : true,
         product,

@@ -1,12 +1,15 @@
 [
 {
-  "name": "Oppo A17",
+  "name": "Oppo F21S PRO 5G",
   "price": 49.99,
   "description": "This is a sample product description for Example Product 1.",
   "ratings": "4.5",
   "images": [
     {
-      "image": "image1.jpg"
+      "image": "/images/products/1.jpg"
+    },
+    {
+      "image": "/images/products/2.jpg"
     }
   ],
   "category": "Electronics",
@@ -28,16 +31,19 @@
   "createdAt": "2023-09-26T12:00:00.000Z"
 },
 {
-    "name": "Bata 1212 Slipper",
+    "name": "FireBolt Smartwatch",
     "price": 29.99,
     "description": "This is another sample product description for Sample Product 2.",
     "ratings": "4.2",
     "images": [
       {
-        "image": "image3.jpg"
+        "image": "/images/products/2.jpg"
+      },
+      {
+        "image": "/images/products/3.jpg"
       }
     ],
-    "category": "Cloths/Shoes",
+    "category": "Electronics",
     "seller": "Fashion House Ltd.",
     "stock": 15,
     "numOfReviews": 10,
@@ -56,19 +62,81 @@
     "createdAt": "2023-09-27T10:30:00.000Z"
   },
   {
-    "name": "NodeJs Concepts Book",
+    "name": "Lenvo B460e Laptop",
     "price": 9.99,
     "description": "A budget-friendly sample product with a brief description.",
     "ratings": "3.9",
     "images": [
       {
-        "image": "image5.jpg"
+        "image": "/images/products/3.jpg"
       },
       {
-        "image": "image6.jpg"
+        "image": "/images/products/4.jpg"
       }
     ],
-    "category": "Books",
+    "category": "Electronics",
+    "seller": "Bookstore XYZ",
+    "stock": 10,
+    "numOfReviews": 5,
+    "reviews": [
+      {
+        "name": "Eva Miller",
+        "rating": "4.2",
+        "comment": "Good read for the price!"
+      },
+      {
+        "name": "David Clark",
+        "rating": "3.5",
+        "comment": "Average quality book."
+      }
+    ],
+    "createdAt": "2023-09-28T15:45:00.000Z"
+  },
+  {
+    "name": "Realme Neckband 1500",
+    "price": 9.99,
+    "description": "A budget-friendly sample product with a brief description.",
+    "ratings": "3.9",
+    "images": [
+      {
+        "image": "/images/products/4.jpg"
+      },
+      {
+        "image": "/images/products/5.jpg"
+      }
+    ],
+    "category": "Electronics",
+    "seller": "Bookstore XYZ",
+    "stock": 10,
+    "numOfReviews": 5,
+    "reviews": [
+      {
+        "name": "Eva Miller",
+        "rating": "4.2",
+        "comment": "Good read for the price!"
+      },
+      {
+        "name": "David Clark",
+        "rating": "3.5",
+        "comment": "Average quality book."
+      }
+    ],
+    "createdAt": "2023-09-28T15:45:00.000Z"
+  },
+  {
+    "name": "Rebook sport shoes",
+    "price": 9.99,
+    "description": "A budget-friendly sample product with a brief description.",
+    "ratings": "3.9",
+    "images": [
+      {
+        "image": "/images/products/5.jpg"
+      },
+      {
+        "image": "/images/products/5.jpg"
+      }
+    ],
+    "category": "Cloths/Shoes",
     "seller": "Bookstore XYZ",
     "stock": 10,
     "numOfReviews": 5,

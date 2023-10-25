@@ -1,21 +1,25 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import  MetaData  from './layouts/MetaData'
-import { getProducts } from '../actions/ProductsActions'
+import  MetaData  from '.././layouts/MetaData'
+import { getProducts } from '../../actions/ProductsActions'
 import { useDispatch, useSelector } from 'react-redux'
-import Loader from './Loader'
-import Product from './products/Product'
+import Loader from '.././Loader'
+import Product from '.././products/Product'
 import { toast } from 'react-toastify'
 import Pagination  from 'react-js-pagination'
+import { useParams } from 'react-router-dom'
 
 
-export const Home = () => {
+export const ProductSearch = () => {
 
 const dispatch = useDispatch();
 
 const {products,loading,error, productsCount, resPerPage} = useSelector((state)=>state.productsState)
 const [currentPage, setCurrentPage] = useState(1);
+
+const  { keyword } = useParams();
 const setCurrentPageNo = (pageNo) =>{
   setCurrentPage(pageNo)
+
 }
 
 useEffect(()=>{
@@ -24,23 +28,34 @@ useEffect(()=>{
         position:toast.POSITION.BOTTOM_CENTER
       })
     }
-    dispatch(getProducts(null, currentPage))
-},[error, dispatch, currentPage])
+    dispatch(getProducts(keyword, currentPage))
+    console.log('in use eff',keyword)
+    
+},[error, dispatch, currentPage, keyword])
   
   return (
     <Fragment>
     {loading ? <Loader></Loader>:
     <Fragment>
 <MetaData title={'Buy best products '}/>
-<h1 id="products_heading">Latest Products</h1>
+<h1 id="products_heading">Search Products</h1>
 
 <section id="products" className="container mt-5">
   <div className="row">
+    <div className='col-6 col-md-3 mb-5 mt-5'>
+      <div className='px-5'>
+
+      </div>
+    </div>
+    <div className='col-6 col-md-9'>
+    <div className='row'>
     {
     products && products.map(product =>(
-      <Product col={3} key={product._id} product={product}/>
+      <Product col={4}key={product._id} product={product}/>
     ))  
     }
+    </div>
+    </div>
   </div>
 </section>
 {productsCount > 0 && productsCount > resPerPage ?
