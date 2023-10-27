@@ -1,157 +1,117 @@
 [
-{
-  "name": "Oppo F21S PRO 5G",
-  "price": 49.99,
-  "description": "This is a sample product description for Example Product 1.",
-  "ratings": "4.5",
-  "images": [
-    {
-      "image": "/images/products/1.jpg"
+  {
+      "name": "OPPO F21s Pro 5G",
+      "price": 245.67,
+      "description": "OPPO F21s Pro 5G is a powerful device with a RAM extension feature, that offers brilliant operational speed to users.",
+      "ratings": 4.5,
+      "images": [
+          {
+              "image": "/images/products/1.jpg"
+          },
+          {
+              "image": "/images/products/2.jpg"
+          }
+      ],
+      "category": "Mobile Phones",
+      "seller": "Amazon",
+      "stock": 5,
+      "numOfReviews": 15,
+      "reviews": []
+  },
+  {
+      "name": "WRISTIO HD, Bluetooth Calling Smart Watch",
+      "price": 150.32,
+      "description": "Minix watches are exclusively designed to fulfill the advanced tech needs of today’s generation.",
+      "ratings": 3.5,
+      "images": [
+          {
+              "image": "/images/products/2.jpg"
+          }
+      ],
+      "category": "Accessories",
+      "seller": "Flipkart",
+      "stock": 9,
+      "numOfReviews": 5,
+      "reviews": []
+  },
+  {
+      "name": "Dell Inspiron 3511 Laptop",
+      "price": 440.57,
+      "description": "Dell Inspiron 3511 11th Generation Intel Core i5-1135G7 Processor (8MB Cache, up to 4.2 GHz);Operating System: Windows 10 Home Single Language, English",
+      "ratings": 2,
+      "images": [
+          {
+              "image": "/images/products/3.jpg"
+          }
+      ],
+      "category": "Laptops",
+      "seller": "Ebay",
+      "stock": 9,
+      "numOfReviews": 12,
+      "reviews": []
+  },
+  {
+      "name": "Lenovo IdeaPad Slim 3 Laptop",
+      "price": 250.45,
+      "description": "Lenovo IdeaPad Slim 311th Gen Intel Core i5-1135G7 | Speed: 2.4 GHz (Base) - 4.2 GHz (Max) | 4 Cores | 8 Threads | 8 MB Cache",
+      "ratings": 4,
+      "images": [
+        {
+          "image": "/images/products/6.jpg"
+        }
+      ],
+      "category": "Laptops",
+      "seller": "Ebay",
+      "stock": 9,
+      "numOfReviews": 12,
+      "reviews": []
     },
     {
-      "image": "/images/products/2.jpg"
-    }
-  ],
-  "category": "Electronics",
-  "seller": "Sample Seller Inc.",
-  "stock": 12,
-  "numOfReviews": 15,
-  "reviews": [
-    {
-      "name": "John Doe",
-      "rating": "4.0",
-      "comment": "Great product!"
-    },
-    {
-      "name": "Jane Smith",
-      "rating": "5.0",
-      "comment": "Excellent quality."
-    }
-  ],
-  "createdAt": "2023-09-26T12:00:00.000Z"
-},
-{
-    "name": "FireBolt Smartwatch",
-    "price": 29.99,
-    "description": "This is another sample product description for Sample Product 2.",
-    "ratings": "4.2",
-    "images": [
-      {
-        "image": "/images/products/2.jpg"
-      },
-      {
-        "image": "/images/products/3.jpg"
-      }
-    ],
-    "category": "Electronics",
-    "seller": "Fashion House Ltd.",
-    "stock": 15,
-    "numOfReviews": 10,
-    "reviews": [
-      {
-        "name": "Alice Johnson",
-        "rating": "4.5",
-        "comment": "Comfortable and stylish!"
-      },
-      {
-        "name": "Bob Wilson",
-        "rating": "3.8",
-        "comment": "Decent quality but a bit pricey."
-      }
-    ],
-    "createdAt": "2023-09-27T10:30:00.000Z"
+      "name": "ASUS VivoBook 15 Laptop",
+      "price": 767.32,
+      "description": "ASUS VivoBook 15 15.6-inch (39.62 cm) HD, Dual Core Intel Celeron N4020, Thin and Light Laptop (4GB RAM/256GB SSD/Integrated Graphics/Windows 11 Home/Transparent Silver/1.8 Kg), X515MA-BR011W",
+      "ratings": 5,
+      "images": [
+        {
+          "image": "/images/products/7.jpg"
+        }
+      ],
+      "category": "Laptops",
+      "seller": "Ebay",
+      "stock": 9,
+      "numOfReviews": 12,
+      "reviews": []
   },
   {
-    "name": "Lenvo B460e Laptop",
-    "price": 9.99,
-    "description": "A budget-friendly sample product with a brief description.",
-    "ratings": "3.9",
-    "images": [
-      {
-        "image": "/images/products/3.jpg"
-      },
-      {
-        "image": "/images/products/4.jpg"
-      }
-    ],
-    "category": "Electronics",
-    "seller": "Bookstore XYZ",
-    "stock": 10,
-    "numOfReviews": 5,
-    "reviews": [
-      {
-        "name": "Eva Miller",
-        "rating": "4.2",
-        "comment": "Good read for the price!"
-      },
-      {
-        "name": "David Clark",
-        "rating": "3.5",
-        "comment": "Average quality book."
-      }
-    ],
-    "createdAt": "2023-09-28T15:45:00.000Z"
+      "name": "PTron Newly Launched Tangent Sports, 60Hrs Playtime",
+      "price": 15.46,
+      "description": "Gigantic 60 + Hours of music playtime on a single charge; BT5.2 Wireless headphones with ENC (Environmental Noise Cancellation) Technology to enhance your voice quality over the voice calls",
+      "ratings": 5,
+      "images": [
+          {
+              "image": "/images/products/4.jpg"
+          }
+      ],
+      "category": "Headphones",
+      "seller": "Amazon",
+      "stock": 4,
+      "numOfReviews": 20,
+      "reviews": []
   },
   {
-    "name": "Realme Neckband 1500",
-    "price": 9.99,
-    "description": "A budget-friendly sample product with a brief description.",
-    "ratings": "3.9",
-    "images": [
-      {
-        "image": "/images/products/4.jpg"
-      },
-      {
-        "image": "/images/products/5.jpg"
-      }
-    ],
-    "category": "Electronics",
-    "seller": "Bookstore XYZ",
-    "stock": 10,
-    "numOfReviews": 5,
-    "reviews": [
-      {
-        "name": "Eva Miller",
-        "rating": "4.2",
-        "comment": "Good read for the price!"
-      },
-      {
-        "name": "David Clark",
-        "rating": "3.5",
-        "comment": "Average quality book."
-      }
-    ],
-    "createdAt": "2023-09-28T15:45:00.000Z"
-  },
-  {
-    "name": "Rebook sport shoes",
-    "price": 9.99,
-    "description": "A budget-friendly sample product with a brief description.",
-    "ratings": "3.9",
-    "images": [
-      {
-        "image": "/images/products/5.jpg"
-      },
-      {
-        "image": "/images/products/5.jpg"
-      }
-    ],
-    "category": "Cloths/Shoes",
-    "seller": "Bookstore XYZ",
-    "stock": 10,
-    "numOfReviews": 5,
-    "reviews": [
-      {
-        "name": "Eva Miller",
-        "rating": "4.2",
-        "comment": "Good read for the price!"
-      },
-      {
-        "name": "David Clark",
-        "rating": "3.5",
-        "comment": "Average quality book."
-      }
-    ],
-    "createdAt": "2023-09-28T15:45:00.000Z"
+      "name": "Campus Men's Maxico Running Shoes",
+      "price": 10.12,
+      "description": "The high raised back cover with extra padding.",
+      "ratings": 3,
+      "images": [
+          {
+              "image": "/images/products/5.jpg"
+          }
+      ],
+      "category": "Sports",
+      "seller": "Ebay",
+      "stock": 6,
+      "numOfReviews": 9,
+      "reviews": []
   }
 ]

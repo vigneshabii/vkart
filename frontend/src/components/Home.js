@@ -24,7 +24,7 @@ useEffect(()=>{
         position:toast.POSITION.BOTTOM_CENTER
       })
     }
-    dispatch(getProducts(null, currentPage))
+    dispatch(getProducts(null, null, null, null, currentPage))
 },[error, dispatch, currentPage])
   
   return (
@@ -51,6 +51,7 @@ useEffect(()=>{
     totalItemsCount={productsCount}
     itemsCountPerPage={resPerPage}
     nextPageText={'Next'}
+    prevPageText={'Previous'}
     firstPageText={'First'}
     lastPageText={'Last'}
     itemClass={'page-item'}
