@@ -8,6 +8,8 @@ import { HelmetProvider } from 'react-helmet-async'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { ProductSearch } from './components/products/ProductSearch';
+import Login from './components/user/Login';
+import Register from './components/user/Register';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
       <Route path='/search/' element={<ProductSearch/>}/>
       <Route path='/search/:keyword' element={<ProductSearch/>}/>
       <Route path='/product/:id' element={<ProductDetail/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='register' element={<Register/>}/>
     </Routes>
     </div>
     <Footer/>

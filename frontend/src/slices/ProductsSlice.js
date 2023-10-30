@@ -22,12 +22,18 @@ const ProductsSlice = createSlice({
                 loading:false,
                 error: action.payload
             }
+        },
+        clearErrorSearch(state, action){
+            return{
+                ...state,
+                error: null
+            }
         }
     }
 });
 
 const {actions, reducer}  = ProductsSlice
 
-export const {productsRequest, productsSuccess, productsFail} = actions;
+export const {productsRequest, productsSuccess, productsFail, clearErrorSearch} = actions;
 
 export default reducer;

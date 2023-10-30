@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import  MetaData  from '.././layouts/MetaData'
-import { getProducts } from '../../actions/ProductsActions'
+import { clearSearchError, getProducts } from '../../actions/ProductActions'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '.././Loader'
 import Product from '.././products/Product'
@@ -18,13 +18,12 @@ export const ProductSearch = () => {
 const dispatch = useDispatch();
 
 const {products,loading,error, productsCount, resPerPage} = useSelector((state)=>state.productsState)
-const [currentPage, setCurrentPage] = useState(1);
+const [currentPage, setCurrentPage] = useState(null);
 const [price, setPrice] = useState([1,1000]);
 const [priceChanged, setPriceChanged] = useState(price);
 const [category, setCategory] = useState(null);
 const [rating, setRating] = useState(0);
 
-console.log(price)
 const  { keyword } = useParams();
 
 const categories = [
@@ -47,12 +46,14 @@ const setCurrentPageNo = (pageNo) =>{
 }
 
 useEffect(()=>{
-    if(error){
-      return toast(error,{
-        position:toast.POSITION.BOTTOM_CENTER
-      })
-    }
-    dispatch(getProducts(keyword, price, category, rating, currentPage))
+  if(error){ 
+        return toast(error,{
+        position:toast.POSITION.BOTTOM_CENTER,
+        type: 'error',
+        onOpen: ()=>{dispatch(clearSearchError)}
+    });
+  }
+    dispatch(getProducts(keyword, priceChanged, category, rating, currentPage))
     
 },[error, dispatch, currentPage, keyword, priceChanged, category, rating])
   
@@ -67,7 +68,7 @@ useEffect(()=>{
   <div className="row">
     <div className='col-6 col-md-3 mb-5 mt-5'>
       {/* Price Filter */}
-      <div className='px-5' onMouseUp={setPriceChanged}>
+      <div className='px-5' onMouseUp={()=>setPriceChanged(price)}>
         <Slider
         range={true}
         marks={

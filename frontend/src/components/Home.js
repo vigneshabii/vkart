@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import  MetaData  from './layouts/MetaData'
-import { getProducts } from '../actions/ProductsActions'
+import { getProducts } from '../actions/ProductActions'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from './Loader'
 import Product from './products/Product'
@@ -18,15 +18,14 @@ const setCurrentPageNo = (pageNo) =>{
   setCurrentPage(pageNo)
 }
 
-useEffect(()=>{
-    if(error){
-      return toast(error,{
-        position:toast.POSITION.BOTTOM_CENTER
-      })
+  useEffect(()=>{
+    if(error) {
+        return toast.error(error,{
+            position: toast.POSITION.BOTTOM_CENTER
+        })
     }
-    dispatch(getProducts(null, null, null, null, currentPage))
-},[error, dispatch, currentPage])
-  
+    dispatch(getProducts(null, null, null, null, currentPage)) 
+}, [error, dispatch, currentPage])
   return (
     <Fragment>
     {loading ? <Loader></Loader>:
