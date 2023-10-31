@@ -80,7 +80,8 @@ exports.forgotPassword = async (req,res,next) =>{
 
     //Create Reset url
     //http://127.0.0.1/api/v1/password/reset/token
-    const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/password/reset/${resetToken}`
+    // const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/password/reset/${resetToken}`
+    const resetUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`
     const message = `Your password reset as followd \n \n   
     ${resetUrl} \n\n if you have not requested this email please ignore it`
       try{
@@ -146,7 +147,7 @@ exports.changePassword = async (req,res,next) =>{
 
     //check old password
     if(! await user.isValidPassword(req.body.oldPassword)){
-        throw createErrorHandler('Old password is incorrect',401)
+        throw new createErrorHandler('Old password is incorrect',401)
     }
     //Assign new password
     user.password = req.body.password;
@@ -162,10 +163,16 @@ exports.changePassword = async (req,res,next) =>{
 //Update profile - /api/v1/update
 exports.updateProfile = async (req,res,next) => {
     try{
-    const newUserData = {
+    let newUserData = {
         name: req.body.name,
         email: req.body.email
     }
+    let avatar = undefined
+    if(req.file){
+        avatar = `${process.env.BACKEND_URL}/uploads/user/${req.file.originalname}`
+        newUserData = {...newUserData,avatar}
+    }
+
     const user =await User.findByIdAndUpdate(req.user.id, newUserData, {
         new: true,
         runValidators: true,

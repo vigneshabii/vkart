@@ -36,7 +36,7 @@ router.route('/password/forgot').post(catchAsyncError(forgotPassword));
 router.route('/password/reset/:token').post(catchAsyncError(resetPassword));
 router.route('/myprofile').get(isAuthenticatedUser,catchAsyncError(getUserProfile));
 router.route('/password/change').put(isAuthenticatedUser,catchAsyncError(changePassword));
-router.route('/update').put(isAuthenticatedUser,catchAsyncError(updateProfile));
+router.route('/update').put(isAuthenticatedUser,upload.single('avatar'),catchAsyncError(updateProfile));
 
 //Admin routes
 router.route('/admin/users').get(isAuthenticatedUser,authorizeRoles('admin'),catchAsyncError(getAllusers));
