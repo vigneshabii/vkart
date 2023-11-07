@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const AuthSlice = createSlice({
-    name: 'product',
+    name: 'auth',
     initialState: {
-        loading: false,
+        loading: true,
         isAuthenticated: false
     },
     reducers:{
@@ -71,7 +71,6 @@ const AuthSlice = createSlice({
             return{
                 ...state,
                 loading:false,
-                error:action.payload
             }
         },
         logoutSuccess(state,action){
@@ -109,6 +108,14 @@ const AuthSlice = createSlice({
                 error:action.payload
             }
         },
+        clearUpdateProfile(state, action){
+            return{
+                ...state,
+                isUpdated:false,
+
+            }
+        },
+        
         updatePasswordRequest(state, action){
             return {
             ...state,
@@ -192,6 +199,7 @@ export const {
     updateProfileRequest,
     updateProfileSuccess,
     updateProfileFail,
+    clearUpdateProfile,
     updatePasswordRequest,
     updatePasswordSuccess,
     updatePasswordFail,

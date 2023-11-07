@@ -3,11 +3,13 @@ import thunk from 'redux-thunk'
 import productsReducer from './slices/ProductsSlice'
 import productReducer from './slices/ProductSlice'
 import authReducer from './slices/AuthSlice'
+import cartReducer from './slices/CartSlice'
 
 const reducer = combineReducers({
     productsState: productsReducer,
     productState: productReducer,
-    authState: authReducer
+    authState: authReducer,
+    cartState: cartReducer
 })
 
 const Store = configureStore({

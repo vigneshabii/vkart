@@ -1,11 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import Search from "./Search";
 import { useDispatch, useSelector } from "react-redux";
-import { DropdownButton, Dropdown, Image } from "react-bootstrap";
+import { Dropdown, Image } from "react-bootstrap";
 import { logout } from "../../actions/UserActions";
 
 export default function Header(){
     const { isAuthenticated, user }=useSelector(state => state.authState); 
+    const { items:cartItems } = useSelector(state => state.cartState)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const logoutHandler = () =>{
@@ -43,8 +44,8 @@ export default function Header(){
         ):
         <Link to="/login" className="btn" id="login_btn">Login</Link>
         }
-        <span id="cart" className="ml-3">Cart</span>
-        <span className="ml-1" id="cart_count">2</span>
+        <Link to={"/cart"}> <span id="cart" className="ml-3">Cart</span> </Link>
+        <span className="ml-1" id="cart_count">{cartItems.length}</span>
       </div>
     </nav>
     )
