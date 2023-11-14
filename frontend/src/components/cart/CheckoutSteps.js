@@ -44,10 +44,6 @@ payment?
         <div className="triangle-incomplete"></div>     
     </Link>
 }
-
-
-
-
 </div>
        
     )

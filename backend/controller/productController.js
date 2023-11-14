@@ -59,7 +59,7 @@ exports.newProduct = async (req,res,next) => {
 //Get Single Product
 exports.getSingleProduct = async (req,res,next) => {
     try{
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id).populate('reviews.user','name email');
     if(!product || product.length === 0){
         throw new createErrorHandler('Product not found',400); 
     }

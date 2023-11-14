@@ -1,12 +1,15 @@
 import { useElements, useStripe } from "@stripe/react-stripe-js"
 import { CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { validateShipping } from "./Shipping";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { orderCompleted } from "../../slices/CartSlice";
+import { createOrder } from "../../actions/OrderActions";
+import { clearOrderError } from "../../slices/OrderSlice";
+import Loader from "../Loader";
 
 export default function Payment () {
     const stripe = useStripe();
@@ -16,6 +19,8 @@ export default function Payment () {
     const orderInfo = JSON.parse(sessionStorage.getItem('orderInfo'))
     const { user } = useSelector(state => state.authState);
     const { items:cartItems, shippingInfo } = useSelector(state => state.cartState);
+    const { error:orderError } = useSelector(state => state.orderState)
+
     const paymentData = {
             amount:Math.round(orderInfo.totalPrice * 100),
             shipping:{
@@ -42,7 +47,16 @@ export default function Payment () {
     }
     useEffect(()=>{
         validateShipping(shippingInfo, navigate)
-    })
+        if(orderError){
+          toast(orderError,{
+            position:"bottom-center",
+            type: 'error',
+            onOpen:()=>{dispatch(clearOrderError())}
+        })
+        return;
+        }
+      },[dispatch, navigate, orderError, shippingInfo])
+
     const submitHandler = async (e) =>{
         e.preventDefault();
         document.querySelector('#pay_btn').disabled= true;
@@ -70,7 +84,12 @@ export default function Payment () {
               type:'success',
               position:'bottom-center',
             })
+            order.paymentInfo = {
+              id: (await result).paymentIntent.id,
+              status: (await result).paymentIntent.status
+            }
             dispatch(orderCompleted())
+            dispatch(createOrder(order))
             navigate('/order/success')
           } else {
             toast("Please try again",{
@@ -80,12 +99,15 @@ export default function Payment () {
           }
         }
       } catch (error) {
-        
+        console.log(error)
       }
     }
     
     return(
-        <div className="row wrapper">
+    
+    
+    <Fragment>
+    <div className="row wrapper">
 		<div className="col-10 col-lg-5">
             <form className="shadow-lg" onSubmit={submitHandler}>
                 <h1 className="mb-4">Card Info</h1>
@@ -127,6 +149,7 @@ export default function Payment () {
     
               </form>
 			  </div>
-        </div>
+    </div>
+    </Fragment>
     )
 }

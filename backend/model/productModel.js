@@ -71,7 +71,8 @@ const productSchema = new mongoose.Schema({
     reviews:[
         {
         user:{
-            type: mongoose.SchemaTypes.ObjectId
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: 'User'
         },
         rating: {
             type: String,

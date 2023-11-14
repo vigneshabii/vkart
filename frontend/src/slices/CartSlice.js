@@ -61,7 +61,7 @@ const CartSlice = createSlice({
         },
         saveShippingInfo(state, action){
             localStorage.setItem('shippingInfo', JSON.stringify(action.payload))
-            return {
+            return { 
                 ...state,
                 shippingInfo: action.payload,
             }
@@ -71,9 +71,9 @@ const CartSlice = createSlice({
             localStorage.removeItem('cartItems')
             localStorage.removeItem('orderInfo')
             return {
-                items :{},
+                ...state,
+                items :[],
                 loading: false,
-                shippingInfo: {} 
             }
         }
 
