@@ -1,11 +1,20 @@
 import axios from "axios"
 import { 
+    adminOrdersFail,
+    adminOrdersRequest,
+    adminOrdersSuccess,
     createOrderFail, 
     createOrderRequest, 
     createOrderSuccess, 
+    deleteOrderFail, 
+    deleteOrderRequest, 
+    deleteOrderSuccess, 
     orderDetailFail,
     orderDetailRequest, 
     orderDetailSuccess, 
+    updateOrderFail, 
+    updateOrderRequest, 
+    updateOrderSuccess, 
     userOrdersFail, 
     userOrdersRequest, 
     userOrdersSuccess 
@@ -38,5 +47,36 @@ export const orderDetail = (id) => async (dispatch) =>{
         dispatch(orderDetailSuccess(data));
     } catch (error) {
         dispatch(orderDetailFail(error.response.data.message))
+    }
+}
+
+export const adminOrders = async (dispatch) =>{
+    try {
+        dispatch(adminOrdersRequest())
+        const {data} = await axios.post('/api/v1/admin/orders')
+        console.log('this is data',data)
+        dispatch(adminOrdersSuccess(data));
+    } catch (error) {
+        dispatch(adminOrdersFail(error.response.data.message))
+    }
+}
+
+export const deleteOrder = id => async (dispatch) =>{
+    try {
+        dispatch(deleteOrderRequest())
+        const {data} = await axios.delete(`/api/v1/admin/order/${id}`)
+        dispatch(deleteOrderSuccess(data));
+    } catch (error) {
+        dispatch(deleteOrderFail(error.response.data.message))
+    }
+}
+
+export const updateOrder = (id, orderData) => async (dispatch) =>{
+    try {
+        dispatch(updateOrderRequest())
+        const {data} = await axios.put(`/api/v1/admin/order/${id}`,orderData)
+        dispatch(updateOrderSuccess(data));
+    } catch (error) {
+        dispatch(updateOrderFail(error.response.data.message))
     }
 }

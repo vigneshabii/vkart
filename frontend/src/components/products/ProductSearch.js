@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import  MetaData  from '.././layouts/MetaData'
-import { clearSearchError, getProducts } from '../../actions/ProductActions'
+import { getProducts } from '../../actions/ProductActions'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '.././Loader'
 import Product from '.././products/Product'
@@ -50,7 +50,6 @@ useEffect(()=>{
         return toast(error,{
         position:toast.POSITION.BOTTOM_CENTER,
         type: 'error',
-        onOpen: ()=>{dispatch(clearSearchError)}
     });
   }
     dispatch(getProducts(keyword, priceChanged, category, rating, currentPage))

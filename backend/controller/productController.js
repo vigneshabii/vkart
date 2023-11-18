@@ -42,6 +42,16 @@ exports.getProducts = async (req,res,next)=>{
 //Create Product - api/v1/product/new
 exports.newProduct = async (req,res,next) => {
     try{
+    let images = [];
+    if(req.files.length>0){
+        req.files.forEach(file => {
+            let url =`${process.env.BACKEND_URL}/uploads/product/${file.originalname}`
+            images.push({
+                image:url,
+            })
+        });
+    }
+    req.body.images = images;
     req.body.user = req.user.id;
     const product = await Product.create(req.body)
     if(!product || product.length === 0){
@@ -78,6 +88,24 @@ exports.getSingleProduct = async (req,res,next) => {
 exports.updateProduct = async (req,res,next) =>{
     try{
     let product=await Product.findById(req.params.id);
+    //uploading images
+    let images = [];
+
+    //if images not cleared we keep existing images
+    if(req.body.imageCleared === 'false'){
+        images =  product.images;
+    }
+
+    if(req.files.length>0){
+        req.files.forEach(file => {
+            let url =`${process.env.BACKEND_URL}/uploads/product/${file.originalname}`
+            images.push({
+                image:url,
+            })
+        });
+    }
+    req.body.images = images;
+    
     if(!product || product.length === 0){
         throw new createErrorHandler('Updation Failed',400); 
     }
@@ -159,7 +187,7 @@ exports.createReview = async(req,res,next)=>{
 //Get Reviews - api/v1/reviews
 exports.getReviews = async(req,res,next) =>{
     try{
-    const product = await Product.findById(req.query.id);
+    const product = await Product.findById(req.query.id).populate('reviews.user','name email');
     res.status(200).json({
         success:true,
         reviews:product.reviews,
@@ -197,6 +225,18 @@ exports.deleteReview = async(req,res,next) =>{
         success:true
     })
     } catch(err){
+        next(err)
+    }
+}
+
+//get admin products - api/v1/admin/products
+exports.getAdmineProducts = async (req,res,next) =>{
+    try{
+        const products = await Product.find()
+        res.status(200).send({
+        success:true,
+        products
+    })} catch(err){
         next(err)
     }
 }

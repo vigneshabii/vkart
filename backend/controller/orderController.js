@@ -97,7 +97,7 @@ exports.updateOrder = async (req,res,next) =>{
         throw new createErrorHandler('Order already delivered',400)
     }
     //Updating the product stock of each order item
-    order.orderItems.forEach(async orderItem =>{
+    order.orderItems.forEach(async (orderItem) =>{
         await updateStock(orderItem.product, orderItem.quantity)
     })
     async function updateStock(productId, quantity){
