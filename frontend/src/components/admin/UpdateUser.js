@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getUser, updateUser } from "../../actions/UserActions";
 import { clearError, clearUserUpdated } from "../../slices/UserSlice";
+import MetaData from "../layouts/MetaData";
 
 export default function UpdateUser () {
     const [name, setName] = useState("");
@@ -57,6 +58,8 @@ export default function UpdateUser () {
   },[user])
 
     return(
+      <Fragment>
+      <MetaData title={"Update User"}></MetaData>
         <div className="row">
         <div className="col-12 col-md-2">
             <Sidebar/>
@@ -117,6 +120,7 @@ export default function UpdateUser () {
                  </Fragment>
             </div>
         </div>
-        </div>   
+        </div>
+      </Fragment> 
     )
 }

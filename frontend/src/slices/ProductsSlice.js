@@ -53,7 +53,7 @@ export const {
     productsRequest, 
     productsSuccess, 
     productsFail, 
-    clearErrorSearch,
+    clearError,
     adminProductsFail,
     adminProductsRequest,
     adminProductsSuccess

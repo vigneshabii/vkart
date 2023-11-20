@@ -9,7 +9,7 @@ import axios from "axios";
 import { orderCompleted } from "../../slices/CartSlice";
 import { createOrder } from "../../actions/OrderActions";
 import { clearOrderError } from "../../slices/OrderSlice";
-import Loader from "../Loader";
+import MetaData from "../layouts/MetaData";
 
 export default function Payment () {
     const stripe = useStripe();
@@ -107,6 +107,7 @@ export default function Payment () {
     
     
     <Fragment>
+      <MetaData title={"Payment"}></MetaData>
     <div className="row wrapper">
 		<div className="col-10 col-lg-5">
             <form className="shadow-lg" onSubmit={submitHandler}>

@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { clearAuthError, register } from "../../actions/UserActions";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import MetaData from "../layouts/MetaData";
 
 export default function Register () {
     const [userData, setUserData] = useState({
@@ -53,6 +54,8 @@ export default function Register () {
         }
       },[error, dispatch, isAuthenticated, navigate])
     return(
+      <Fragment>
+        <MetaData title={"Register "}></MetaData>
         <div className="row wrapper">
 		<div className="col-10 col-lg-5">
         <form onSubmit={submitHandler} className="shadow-lg" encType='multipart/form-data'>
@@ -123,5 +126,6 @@ export default function Register () {
           </form>
 		  </div>
         </div>
+        </Fragment>
     )
 }

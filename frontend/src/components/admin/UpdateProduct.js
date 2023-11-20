@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getProduct, updateProduct } from "../../actions/ProductActions";
 import { clearError, clearProductUpdated } from "../../slices/ProductSlice";
 import { toast } from "react-toastify";
+import MetaData from "../layouts/MetaData";
 
 export default function UpdateProduct () {
     const [name, setName] = useState("");
@@ -114,6 +115,8 @@ export default function UpdateProduct () {
   },[product])
 
     return(
+      <Fragment>
+      <MetaData title={"Update Product"}></MetaData>
         <div className="row">
         <div className="col-12 col-md-2">
             <Sidebar/>
@@ -236,6 +239,7 @@ export default function UpdateProduct () {
                  </Fragment>
             </div>
         </div>
-        </div>   
+        </div>  
+      </Fragment> 
     )
 }

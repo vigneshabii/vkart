@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { getAdminProducts } from "../../actions/ProductActions";
 import { getUsers } from "../../actions/UserActions";
 import { adminOrders as adminOrdersAction  } from "../../actions/OrderActions";
 import { Link } from "react-router-dom";
+import MetaData from "../layouts/MetaData";
 
 export default function Dashboard() {
     const { products =[] } = useSelector(state => state.productsState)
@@ -33,6 +34,8 @@ export default function Dashboard() {
     },[dispatch])
 
     return (
+        <Fragment>
+            <MetaData title={"Dashboard"}></MetaData>
         <div className="row">
             <div className="col-12 col-md-2">
                 <Sidebar/>
@@ -44,7 +47,7 @@ export default function Dashboard() {
                                 <div className="col-xl-12 col-sm-12 mb-3">
                                     <div className="card text-white bg-primary o-hidden h-100">
                                         <div className="card-body">
-                                            <div className="text-center card-font-size">Total Amount<br /> <b>${totalAmount}</b>
+                                            <div className="text-center card-font-size">Total Amount<br /> <b>${Math.round(totalAmount).toFixed(2)}</b>
                                             </div>
                                         </div>
                                     </div>
@@ -108,5 +111,6 @@ export default function Dashboard() {
                 </div>
             </div>
         </div>
+        </Fragment>
     )
 }

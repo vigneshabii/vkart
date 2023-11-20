@@ -3,6 +3,7 @@ import { orderDetail as OrderDetailAction} from "../../actions/OrderActions";
 import { Link, useParams } from "react-router-dom";
 import { Fragment, useEffect } from "react";
 import Loader from "../Loader";
+import MetaData from "../layouts/MetaData";
 
 export default function OrderDetail () {
     const { orderDetail, loading } = useSelector(state => state.orderState);
@@ -17,6 +18,7 @@ export default function OrderDetail () {
 
     return(
         <Fragment>
+        <MetaData title={"Order Detail"}></MetaData>
         {
         loading ? <Loader/> :
         <Fragment>

@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { clearAuthError, updateProfile } from "../../actions/UserActions"
 import { toast } from "react-toastify"
 import { clearUpdateProfile } from "../../slices/AuthSlice"
+import MetaData from "../layouts/MetaData"
 
 export default function UpdateProfile () {
     const { error, user, isUpdated } = useSelector(state => state.authState)
@@ -62,6 +63,8 @@ export default function UpdateProfile () {
     },[user, isUpdated, error, dispatch])
 
     return (
+        <Fragment>
+            <MetaData title={"Update Profile"}></MetaData>
         <div className="row wrapper">
         <div className="col-10 col-lg-5">
             <form onSubmit={submitHandler} className="shadow-lg" encType='multipart/form-data'>
@@ -120,6 +123,7 @@ export default function UpdateProfile () {
                 <button type="submit" className="btn update-btn btn-block mt-4 mb-3" >Update</button>
             </form>
         </div>
-</div>
+        </div>
+        </Fragment>
     )
 }

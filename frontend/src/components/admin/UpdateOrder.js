@@ -6,6 +6,7 @@ import { clearOrderError } from "../../slices/OrderSlice";
 import { toast } from "react-toastify";
 import { updateOrder, orderDetail as orderDetailAction } from "../../actions/OrderActions";
 import { clearOrderUpdated } from "../../slices/OrderSlice";
+import MetaData from "../layouts/MetaData";
 
 export default function UpdateOrder () {
 
@@ -53,6 +54,8 @@ export default function UpdateOrder () {
   },[orderDetail])
 
     return(
+        <Fragment>
+            <MetaData title={"Update Order"}></MetaData>
         <div className="row">
         <div className="col-12 col-md-2">
             <Sidebar/>
@@ -125,6 +128,7 @@ export default function UpdateOrder () {
                  </Fragment>
             </div>
         </div>
-        </div>   
+        </div>
+        </Fragment>
     )
 }

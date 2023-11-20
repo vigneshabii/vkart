@@ -11,13 +11,13 @@ import Slider from 'rc-slider';
 import Tooltip from 'rc-tooltip'
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css'
-
+import { clearError } from '../../slices/ProductsSlice'
 
 export const ProductSearch = () => {
 
 const dispatch = useDispatch();
 
-const {products,loading,error, productsCount, resPerPage} = useSelector((state)=>state.productsState)
+const {products=[],loading=true,error="", productsCount, resPerPage} = useSelector((state)=>state.productsState)
 const [currentPage, setCurrentPage] = useState(null);
 const [price, setPrice] = useState([1,1000]);
 const [priceChanged, setPriceChanged] = useState(price);
@@ -46,15 +46,25 @@ const setCurrentPageNo = (pageNo) =>{
 }
 
 useEffect(()=>{
-  if(error){ 
-        return toast(error,{
-        position:toast.POSITION.BOTTOM_CENTER,
-        type: 'error',
+  dispatch(getProducts(keyword, priceChanged, category, rating, currentPage))
+},[dispatch, currentPage, keyword, priceChanged, category, rating])
+
+useEffect(() => {
+  if (error) {
+    const toastId = toast(error, {
+      position: toast.POSITION.BOTTOM_CENTER,
+      type: 'error',
+      delay:1,
+      onOpen:dispatch(clearError())
     });
+
+    return () => {
+      
+      // Perform any cleanup actions if needed, like dismissing the toast
+      toast.dismiss(toastId);
+    };
   }
-    dispatch(getProducts(keyword, priceChanged, category, rating, currentPage))
-    
-},[error, dispatch, currentPage, keyword, priceChanged, category, rating])
+}, [error, dispatch]);
   
   return (
     <Fragment>

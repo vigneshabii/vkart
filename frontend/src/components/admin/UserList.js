@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import Sidebar from "./Sidebar";
 import { deleteUser, getUsers } from "../../actions/UserActions";
 import { clearError, clearUserDeleted } from "../../slices/UserSlice";
+import MetaData from "../layouts/MetaData";
 
 
 export default function UserList() {
@@ -87,6 +88,8 @@ export default function UserList() {
           dispatch(getUsers)
     },[error, dispatch, isUserDeleted])
     return(
+        <Fragment>
+        <MetaData title={"User List"}></MetaData>
         <div className="row">
             <div className="col-12 col-md-2">
                 <Sidebar/>
@@ -109,5 +112,6 @@ export default function UserList() {
                 </div>
             </div>
         </div>
+        </Fragment>
     )
 }

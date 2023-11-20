@@ -1,9 +1,13 @@
+import { Fragment } from "react";
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom";
+import MetaData from "../layouts/MetaData";
 
 export default function Profile () {
     const {user} = useSelector(state => state.authState);
     return (
+        <Fragment>
+            <MetaData title={"Profile "}></MetaData>
         <div className="row justify-content-around mt-5 user-info">
             <div className="col-12 col-md-3">
                 <figure className='avatar avatar-profile'>
@@ -31,5 +35,6 @@ export default function Profile () {
                 </Link>
             </div>
         </div>
+        </Fragment>
     )
 }

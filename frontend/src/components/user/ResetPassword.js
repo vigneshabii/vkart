@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { clearAuthError, resetPassword } from "../../actions/UserActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import MetaData from "../layouts/MetaData";
 
 export default function ResetPassword(){
     const [password, setPassword] = useState("");
@@ -38,6 +39,8 @@ export default function ResetPassword(){
         }
     },[isAuthenticated, error, dispatch, navigate])
     return(
+        <Fragment>
+            <MetaData title={"Reset Password"}></MetaData>
         <div className="row wrapper">
             <div className="col-10 col-lg-5">
                 <form onSubmit={submitHandler} className="shadow-lg">
@@ -75,5 +78,6 @@ export default function ResetPassword(){
                 </form>
             </div>
         </div>
+        </Fragment>
     )
 }

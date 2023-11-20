@@ -30,7 +30,7 @@ const setCurrentPageNo = (pageNo) =>{
     <Fragment>
     {loading ? <Loader></Loader>:
     <Fragment>
-<MetaData title={'Buy best products '}/>
+<MetaData title={'Buy Best Products '}/>
 <h1 id="products_heading">Latest Products</h1>
 
 <section id="products" className="container mt-5">
@@ -55,7 +55,7 @@ const setCurrentPageNo = (pageNo) =>{
     lastPageText={'Last'}
     itemClass={'page-item'}
     linkClass={'page-link'}
-    
+
 />
 </div>:null}
 

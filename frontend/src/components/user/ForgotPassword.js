@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { clearAuthError, forgotPassword } from "../../actions/UserActions";
 import { toast } from "react-toastify";
+import MetaData from "../layouts/MetaData";
 
 export default function ForgotPassword(){
     const [email, setEmail] = useState("");
@@ -36,6 +37,8 @@ export default function ForgotPassword(){
     },[message, error, dispatch])
 
     return(
+        <Fragment>
+            <MetaData title={"Forgot Password"}></MetaData>
         <div className="row wrapper">
                 <div className="col-10 col-lg-5">
                     <form onSubmit={submitHandler} className="shadow-lg">
@@ -61,5 +64,6 @@ export default function ForgotPassword(){
                     </form>
                 </div>
         </div>
+        </Fragment>
     )
 }

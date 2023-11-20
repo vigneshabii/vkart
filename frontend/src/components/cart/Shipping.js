@@ -5,6 +5,7 @@ import { saveShippingInfo } from "../../slices/CartSlice";
 import { useNavigate } from "react-router-dom";
 import CheckoutSteps from "./CheckoutSteps";
 import { toast } from "react-toastify";
+import MetaData from "../layouts/MetaData";
 
 export const validateShipping = (shippingInfo, navigate) => {
    
@@ -44,6 +45,7 @@ export default function Shipping() {
 
     return (
         <Fragment>
+            <MetaData title={"Shipping"}></MetaData>
             <CheckoutSteps shipping />
             <div className="row wrapper">
                     <div className="col-10 col-lg-5">

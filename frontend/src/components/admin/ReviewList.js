@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import Sidebar from "./Sidebar";
 import { deleteReviews, getReviews } from "../../actions/ProductActions";
 import { clearError, clearReviewDeleted } from "../../slices/ProductSlice";
+import MetaData from "../layouts/MetaData";
 
 
 export default function ReviewList() {
@@ -89,8 +90,10 @@ export default function ReviewList() {
         dispatch(getReviews(productId))
           return;
         }
-    },[error, dispatch, isReviewDeleted])
+    },[error, dispatch, isReviewDeleted, productId])
     return(
+        <Fragment>
+            <MetaData title={"Review List"}></MetaData>
         <div className="row">
             <div className="col-12 col-md-2">
                 <Sidebar/>
@@ -124,5 +127,6 @@ export default function ReviewList() {
                 </div>
             </div>
         </div>
+        </Fragment>
     )
 }

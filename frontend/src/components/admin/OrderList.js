@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import Sidebar from "./Sidebar";
 import { deleteOrder, adminOrders as adminOrdersAction } from "../../actions/OrderActions";
 import { clearOrderDeleted, clearOrderError } from "../../slices/OrderSlice";
+import MetaData from "../layouts/MetaData";
 
 export default function OrderList() {
     const { adminOrders=[], loading=true, error, isOrderDeleted } = useSelector(state => state.orderState)
@@ -85,6 +86,8 @@ export default function OrderList() {
           dispatch(adminOrdersAction)
     },[error, dispatch, isOrderDeleted])
     return(
+        <Fragment>
+            <MetaData title={"Order List"}></MetaData>
         <div className="row">
             <div className="col-12 col-md-2">
                 <Sidebar/>
@@ -107,5 +110,6 @@ export default function OrderList() {
                 </div>
             </div>
         </div>
+        </Fragment>
     )
 }
