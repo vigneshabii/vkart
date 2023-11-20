@@ -16,7 +16,7 @@ npm-debug.log*
 .flow/
 
 # Production build
-/build/
+# /build/
 
 # Coverage directory used by tools like istanbul
 /coverage/
